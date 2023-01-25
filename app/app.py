@@ -16,6 +16,7 @@ from pygments.formatters import HtmlFormatter
 load_dotenv()
 
 ES_PWD = os.getenv("ES_PWD") 
+
 ES_IP = os.getenv("ES_IP")
 
 es = Elasticsearch(
