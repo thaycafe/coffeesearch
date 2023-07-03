@@ -1,7 +1,7 @@
 ## Bem vindo a cafeteria _4coffee_
 
 
-![4coffee](https://media.giphy.com/media/ROyijmazFKRc4/giphy.gif)
+![CoffeeSearch](https://media.giphy.com/media/ROyijmazFKRc4/giphy.gif)
 
 **Sou uma api construída em Flask!**
 

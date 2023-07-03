@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  4coffee_app:
+  coffeesearch:
     build: 
       context: ../
       dockerfile: deployment/Dockerfile
@@ -18,8 +18,8 @@ services:
     command: mongod --auth
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongodbuser
-      MONGO_INITDB_ROOT_PASSWORD: 4linux4linux
-      MONGO_INITDB_DATABASE: 4coffeedb
+      MONGO_INITDB_ROOT_PASSWORD: coffeecoffee
+      MONGO_INITDB_DATABASE: coffeedb
       MONGODB_DATA_DIR: /data/db
       MONDODB_LOG_DIR: /dev/null
     volumes:
@@ -33,7 +33,7 @@ services:
     ports:
       - 8080:80
     depends_on:
-      - 4coffee_app
+      - coffeesearch
     networks:
       - frontend
 

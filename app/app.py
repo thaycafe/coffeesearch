@@ -28,7 +28,7 @@ es = Elasticsearch(
 app = Flask(__name__)
 
 app.config['ELASTIC_APM'] = {
-  'SERVICE_NAME': 'flaskApp',
+  'SERVICE_NAME': 'Coffeesearch',
   'SERVER_URL': 'http://${ES_IP}:8200',
   'ENVIRONMENT': 'production',
 }
@@ -59,7 +59,7 @@ def home():
 def index():
     coffees = db.coffee.find()
     results = es.search(
-        index='4coffee-app',
+        index='coffeesearch',
         query={"match_all":{}},
         filter_path=["hits.hits._source.coffee","hits.hits._source.price","hits.hits._source.sugar","hits.hits._source.customer"]
         )
@@ -85,7 +85,7 @@ def add_coffee():
         'timestamp': datetime.now()
     }
     
-    response = es.index(index='4coffee-app', document=doc)
+    response = es.index(index='coffeesearch', document=doc)
     db.coffee.insert_one(doc)
 
     return jsonify(response['result']),201
@@ -102,7 +102,7 @@ def search_customer(customer):
     }
 
     res = es.search(
-            index="4coffee-app", 
+            index="coffeesearch", 
             body=body,
             filter_path=["hits.hits._source.coffee","hits.hits._source.price","hits.hits._source.sugar","hits.hits._source.customer"]
             )
@@ -123,7 +123,7 @@ def search_coffee(coffee):
     }
 
     res = es.search(
-            index="4coffee-app", 
+            index="coffeesearch", 
             body=body, 
             filter_path=["hits.hits._source.coffee","hits.hits._source.price","hits.hits._source.sugar","hits.hits._source.customer"]
             )
